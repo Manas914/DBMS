@@ -1,0 +1,52 @@
+Q – Making a student table
+Ans – 
+CREATE TABLE Student (
+    StudentId NUMBER(4) PRIMARY KEY,
+    Student_name VARCHAR2(40) NOT NULL,
+    Address1 VARCHAR2(300),
+    Gender VARCHAR2(15),
+    Course VARCHAR2(8)
+);
+Q – Making a course table
+Ans – 
+CREATE TABLE Course (
+    DeptNo NUMBER(2) PRIMARY KEY,
+    Dname VARCHAR2(20),
+    Location VARCHAR2(10)
+);
+Q – Making a Customer & Orders table
+Ans – 
+CREATE TABLE CUSTOMER (
+    SID NUMBER PRIMARY KEY,
+    Last_Name VARCHAR2(50),
+    First_Name VARCHAR2(50)
+);
+
+CREATE TABLE ORDERS (
+    Order_ID NUMBER PRIMARY KEY,
+    Order_Date DATE,
+    Customer_SID NUMBER,
+    Amount NUMBER CHECK (Amount > 20000),
+    FOREIGN KEY (Customer_SID) REFERENCES CUSTOMER(SID)
+);
+Q - Data Insertion
+Ans – 
+INSERT INTO Student VALUES (7369, 'Raj Sharma', '789 Pune Avenue', 'Male', 'MCA');
+INSERT INTO Student VALUES (7777, 'Priya Singh', '321 Kolkata Lane', 'Female', 'BSc');
+INSERT INTO Student VALUES (2233, 'Sarah Lee', '456 Mumbai Street', 'Female', 'BCA');
+
+INSERT INTO CUSTOMER VALUES (1, 'Patel', 'Amit');
+INSERT INTO CUSTOMER VALUES (2, 'Gupta', 'Neha');
+Q - Basic SELECT Queries
+Ans – 
+List all students
+SELECT * FROM Student;
+
+Students in MCA course
+SELECT * FROM Student WHERE Course = 'MCA';
+
+Specific student IDs
+SELECT Student_name FROM Student WHERE StudentId IN (7369, 7777, 2233);
+
+Names starting with 'S'
+SELECT Student_name FROM Student WHERE Student_name LIKE 'S%';
